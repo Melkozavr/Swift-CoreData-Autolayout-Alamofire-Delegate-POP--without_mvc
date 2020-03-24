@@ -39,7 +39,7 @@ class MailViewController: UIViewController{
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = (UIColor.black.cgColor)
         descriptionTextView.textAlignment = .left
-        descriptionTextView.text = "weqewqewqeqweqweqweqeqqeqwdsdasdasdafsedgfhufdsiuasjoioishdfiuhas"
+        descriptionTextView.text = "weqewqew"
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextView.isEditable = true
         descriptionTextView.isScrollEnabled = true
@@ -61,12 +61,11 @@ class MailViewController: UIViewController{
             toTextField.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             toTextField.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
             
-            descriptionTextView.topAnchor.constraint(equalTo: toTextField.bottomAnchor, constant: 20),
+            descriptionTextView.topAnchor.constraint(equalTo: toTextField.topAnchor, constant: 20),
             descriptionTextView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             descriptionTextView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            descriptionTextView.bottomAnchor.constraint(equalTo: sendButton.topAnchor, constant: 20),
             
-            sendButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 20),
+            sendButton.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 20),
             sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         
         ])

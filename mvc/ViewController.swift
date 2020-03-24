@@ -11,7 +11,26 @@ import CoreData
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: - Views, Controllers and Buttons
+// MARK: - Save CoreData
+    
+    func addUsers(_ name: String, _ password: String, _ rights: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Users", in: context)
+        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        
+        newUser.setValue(name, forKey: "name")
+        newUser.setValue(password, forKey: "password")
+        newUser.setValue(rights, forKey: "rights")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
+    // MARK: - Views, Controllers, Buttons and add some data in CoreData
 
     var nameTextField: UITextField!
     var passwordTextField: UITextField!
@@ -21,6 +40,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.navigationItem.hidesBackButton = true
+        
+        addUsers("Alex", "123", "admin")
+        addUsers("Martin", "qwe", "apprentice")
+        addUsers("Melman", "asd", "hr")
+        addUsers("Gloria", "zxc", "smm")
         
         nameTextField = UITextField(frame: .zero)
         nameTextField.layer.cornerRadius = 5
@@ -66,14 +90,49 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ])
     }
     
-// MARK: - Push button and segue
+// MARK: - Push button, fetching data and segue
     
     
     @objc func handleLoginTouchUpInside() {
         print("Login button has been tapped")
-        
-        let accessViewController = AccessViewController()
-        self.navigationController?.pushViewController(accessViewController, animated: true) // works with navigation controller
-        //self.present(accessViewController, animated: true, completion: nil) if you have not navigation controller
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        var counter = 0
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                if data.value(forKey: "name") as! String == nameTextField.text! {
+                    counter += 1
+                }
+                
+            }
+            for data in result as! [NSManagedObject] {
+                if data.value(forKey: "password") as! String == passwordTextField.text! {
+                    counter += 1
+                }
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+        if nameTextField.text != "" && passwordTextField.text != ""{
+            if counter == 2 {
+                let accessViewController = AccessViewController()
+                self.navigationController?.pushViewController(accessViewController, animated: true) // works with navigation controller
+                //self.present(accessViewController, animated: true, completion: nil) if you have not navigation controller
+            } else {
+                let alert = UIAlertController(title: "Error!", message: "Password or Login are incorrect", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "Error!", message: "Fill the TextFields", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

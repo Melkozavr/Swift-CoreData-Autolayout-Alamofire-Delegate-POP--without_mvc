@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="History" representedClassName="History" syncable="YES" codeGenerationType="class">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="user_history" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="history" inverseEntity="Users"/>
-    </entity>
-    <entity name="Possibilities" representedClassName="Possibilities" syncable="YES" codeGenerationType="class">
-        <attribute name="rights_description" attributeType="String"/>
-        <relationship name="user_rights" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="possibilities" inverseEntity="Users"/>
-    </entity>
     <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <attribute name="rights" attributeType="String"/>
-        <relationship name="history" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="user_history" inverseEntity="History"/>
-        <relationship name="possibilities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Possibilities" inverseName="user_rights" inverseEntity="Possibilities"/>
     </entity>
     <elements>
-        <element name="Users" positionX="299.25390625" positionY="-276.34375" width="128" height="118"/>
-        <element name="Possibilities" positionX="-19.2265625" positionY="-163.73828125" width="128" height="73"/>
-        <element name="History" positionX="-21.7265625" positionY="-321.46875" width="128" height="73"/>
+        <element name="Users" positionX="299.25390625" positionY="-276.34375" width="128" height="88"/>
     </elements>
 </model>
