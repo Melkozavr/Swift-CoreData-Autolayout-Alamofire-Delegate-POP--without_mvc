@@ -39,7 +39,7 @@ class MailViewController: UIViewController, forViewControllers{
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = (UIColor.black.cgColor)
         descriptionTextView.textAlignment = .left
-        descriptionTextView.text = "weqewqew"
+        descriptionTextView.text = ""
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         descriptionTextView.isEditable = true
         descriptionTextView.isScrollEnabled = true
@@ -61,22 +61,28 @@ class MailViewController: UIViewController, forViewControllers{
             toTextField.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             toTextField.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
 
+            descriptionTextView.heightAnchor.constraint(equalToConstant: 100.0),
             descriptionTextView.topAnchor.constraint(equalTo: toTextField.topAnchor, constant: 20),
             descriptionTextView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             descriptionTextView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
 
-            sendButton.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 20),
+            sendButton.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 120),
             sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
     @objc func handleSendButtonTouchUpInside() {
         print("Send button has been tapped")
-
-        let alert = UIAlertController(title: "Report", message: "Message has been sent", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        print("who will get the message: \(toTextField.text!), text of the message: \(descriptionTextView.text!)")
+        if toTextField.text! != "" && descriptionTextView.text! != "" {
+            let alert = UIAlertController(title: "Report", message: "Message has been sent", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("who will get the message: \(toTextField.text!), text of the message: \(descriptionTextView.text!)")
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Please, fill all the fields", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc func handleExitButtonTouchUpInside() {

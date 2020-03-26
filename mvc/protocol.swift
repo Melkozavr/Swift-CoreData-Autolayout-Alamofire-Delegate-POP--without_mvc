@@ -10,7 +10,5 @@ import Foundation
 
 protocol forViewControllers {
     
-    override fucn viewDidLoad()
-    
     func constraintsInit()
 }
