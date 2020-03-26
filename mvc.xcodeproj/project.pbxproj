@@ -16,6 +16,7 @@
 		CE490BFD2423E34900EA3F30 /* AccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE490BFC2423E34900EA3F30 /* AccessViewController.swift */; };
 		CE490C012424C3F100EA3F30 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE490C002424C3F100EA3F30 /* MailViewController.swift */; };
 		CE490C032424CCD900EA3F30 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE490C022424CCD900EA3F30 /* CollectionViewController.swift */; };
+		CE9F1A5A242CCC4B002D7967 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F1A59242CCC4B002D7967 /* protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CE490BFC2423E34900EA3F30 /* AccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessViewController.swift; sourceTree = "<group>"; };
 		CE490C002424C3F100EA3F30 /* MailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		CE490C022424CCD900EA3F30 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		CE9F1A59242CCC4B002D7967 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				CE490BDD2423CEB500EA3F30 /* ViewController.swift */,
 				CE490C002424C3F100EA3F30 /* MailViewController.swift */,
 				CE490BFC2423E34900EA3F30 /* AccessViewController.swift */,
+				CE9F1A59242CCC4B002D7967 /* protocol.swift */,
 				CE490C022424CCD900EA3F30 /* CollectionViewController.swift */,
 				CE490BE52423CEB800EA3F30 /* Assets.xcassets */,
 				CE490BE72423CEB800EA3F30 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				CE490BDE2423CEB500EA3F30 /* ViewController.swift in Sources */,
 				CE490C012424C3F100EA3F30 /* MailViewController.swift in Sources */,
 				CE490BFD2423E34900EA3F30 /* AccessViewController.swift in Sources */,
+				CE9F1A5A242CCC4B002D7967 /* protocol.swift in Sources */,
 				CE490BDA2423CEB500EA3F30 /* AppDelegate.swift in Sources */,
 				CE490C032424CCD900EA3F30 /* CollectionViewController.swift in Sources */,
 				CE490BE42423CEB500EA3F30 /* mvc.xcdatamodeld in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MailViewController: UIViewController{
+class MailViewController: UIViewController, forViewControllers{
 
     var exitButton: UIButton!
     var toTextField: UITextField!
@@ -34,7 +34,7 @@ class MailViewController: UIViewController{
         toTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toTextField)
         
-        descriptionTextView = UITextView()
+        descriptionTextView = UITextView(frame: .zero)
         descriptionTextView.layer.cornerRadius = 5
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = (UIColor.black.cgColor)
@@ -60,14 +60,13 @@ class MailViewController: UIViewController{
             toTextField.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor, constant: 30),
             toTextField.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             toTextField.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            
+
             descriptionTextView.topAnchor.constraint(equalTo: toTextField.topAnchor, constant: 20),
             descriptionTextView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor, constant: 20),
             descriptionTextView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor, constant: -20),
-            
+
             sendButton.topAnchor.constraint(equalTo: descriptionTextView.topAnchor, constant: 20),
             sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
         ])
     }
     
@@ -77,6 +76,7 @@ class MailViewController: UIViewController{
         let alert = UIAlertController(title: "Report", message: "Message has been sent", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        print("who will get the message: \(toTextField.text!), text of the message: \(descriptionTextView.text!)")
     }
     
     @objc func handleExitButtonTouchUpInside() {

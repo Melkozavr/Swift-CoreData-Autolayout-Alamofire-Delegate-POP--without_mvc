@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, forViewControllers {
     
 // MARK: - Save CoreData
     
@@ -97,22 +97,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("Login button has been tapped")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        var counter = 0
+        var accessFlag = 0
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                if data.value(forKey: "name") as! String == nameTextField.text! {
-                    counter += 1
+                if data.value(forKey: "name") as! String == nameTextField.text! && data.value(forKey: "password") as! String == passwordTextField.text! {
+                    accessFlag = 1
                 }
                 
-            }
-            for data in result as! [NSManagedObject] {
-                if data.value(forKey: "password") as! String == passwordTextField.text! {
-                    counter += 1
-                }
             }
             
         } catch {
@@ -120,7 +115,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             print("Failed")
         }
         if nameTextField.text != "" && passwordTextField.text != ""{
-            if counter == 2 {
+            if accessFlag == 1 {
                 let accessViewController = AccessViewController()
                 self.navigationController?.pushViewController(accessViewController, animated: true) // works with navigation controller
                 //self.present(accessViewController, animated: true, completion: nil) if you have not navigation controller

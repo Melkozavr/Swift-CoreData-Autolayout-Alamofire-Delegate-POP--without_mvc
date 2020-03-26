@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccessViewController: UIViewController, UICollectionViewDelegate {
+class AccessViewController: UIViewController, UICollectionViewDelegate, forViewControllers {
 
     var toPic: UIButton!
     var toMail: UIButton!

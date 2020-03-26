@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController { // add forViewControllers
 
     var exitButton: UIButton!
     
