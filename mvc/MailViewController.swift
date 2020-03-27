@@ -78,6 +78,8 @@ class MailViewController: UIViewController, forViewControllers{
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             print("who will get the message: \(toTextField.text!), text of the message: \(descriptionTextView.text!)")
+            toTextField.text = ""
+            descriptionTextView.text = ""
         } else {
             let alert = UIAlertController(title: "Error", message: "Please, fill all the fields", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
