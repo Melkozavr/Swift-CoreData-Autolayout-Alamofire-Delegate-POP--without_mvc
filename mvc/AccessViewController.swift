@@ -21,7 +21,7 @@ class AccessViewController: UIViewController, UICollectionViewDelegate, forViewC
         toPic.setTitle("Go to Picture`s Page", for: .normal)
         toPic.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(toPic)
-        //toPic.addTarget(self, action: #selector(handleToPicTouchUpInside), for: .touchUpInside)
+        toPic.addTarget(self, action: #selector(handleToPicTouchUpInside), for: .touchUpInside)
         
         toMail = UIButton(type: .system)
         toMail.setTitle("Go to Mail", for: .normal)
@@ -53,7 +53,7 @@ class AccessViewController: UIViewController, UICollectionViewDelegate, forViewC
     @objc func handleToPicTouchUpInside() {
         print("Picture`s button has been tapped")
         
-        let collectionViewController = CollectionViewController()
-        self.navigationController?.pushViewController(collectionViewController, animated: true)
+        let alamofireViewController = AlamofireViewController()
+        self.navigationController?.pushViewController(alamofireViewController, animated: true)
     }
 }
