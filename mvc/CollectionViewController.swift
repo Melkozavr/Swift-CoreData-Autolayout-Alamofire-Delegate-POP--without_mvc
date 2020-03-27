@@ -7,10 +7,22 @@
 //
 
 import UIKit
+import Alamofire
+
+struct CustomData {
+    var url: String
+}
 
 class AlamofireViewController: UIViewController, forViewControllers {
     
     var exitButton: UIButton!
+    
+    let data = [
+        CustomData(url: "https://www.nasa.gov/sites/default/files/thumbnails/image/florence.jpeg"),
+        CustomData(url: "https://www.nasa.gov/sites/default/files/thumbnails/image/45025340661_7b9f8f9402_k.jpg"),
+        CustomData(url: "https://www.nasa.gov/sites/default/files/thumbnails/image/8.22-396o5017lane.jpg"),
+        CustomData(url: "https://www.nasa.gov/sites/default/files/thumbnails/image/43656168861_3c30e55b14_o.jpg")
+    ]
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -63,13 +75,12 @@ extension AlamofireViewController: UICollectionViewDelegateFlowLayout, UICollect
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
-        cell.backgroundColor = .red
-        
+        cell.data = self.data[indexPath.row]
         return cell
     }
     
@@ -78,9 +89,19 @@ extension AlamofireViewController: UICollectionViewDelegateFlowLayout, UICollect
 
 class CustomCell: UICollectionViewCell {
     
+    var data: CustomData? {
+        didSet {
+            guard let data = data else { return }
+            AF.download(data.url).responseData { response in
+               if let data = response.value {
+                self.bg.image = UIImage(data: data)
+               }
+            }
+        }
+    }
+    
     fileprivate let bg: UIImageView = {
         let iv = UIImageView()
-        
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true

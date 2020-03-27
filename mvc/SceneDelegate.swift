@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        let nc = UINavigationController(rootViewController: AlamofireViewController())
+        let nc = UINavigationController(rootViewController: ViewController())
         window?.windowScene = windowScene
         window?.rootViewController = nc
         window?.makeKeyAndVisible()

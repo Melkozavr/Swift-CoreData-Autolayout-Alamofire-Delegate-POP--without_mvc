@@ -116,6 +116,8 @@ class ViewController: UIViewController, UITextFieldDelegate, forViewControllers 
         }
         if nameTextField.text != "" && passwordTextField.text != ""{
             if accessFlag == 1 {
+                nameTextField.text = ""
+                passwordTextField.text = ""
                 let accessViewController = AccessViewController()
                 self.navigationController?.pushViewController(accessViewController, animated: true) // works with navigation controller
                 //self.present(accessViewController, animated: true, completion: nil) if you have not navigation controller
